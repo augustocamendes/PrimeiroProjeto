@@ -22,6 +22,14 @@ public class Main {
         if (pessoa2.getIdade() >= 18) {
             System.out.println(pessoa2.nome + " é maior de idade!");
         }
+        // Criando uma pessoa usando o Record:
+        PessoaRecord aluno = new PessoaRecord("Augusto", 25);
 
+// Lendo os dados:
+        System.out.println("Nome: " + aluno.nome());
+        System.out.println("Idade: " + aluno.idade());
+
+// O superpoder do Record: imprima ele direto!
+        System.out.println("Record completo: " + aluno);
     } // <-- Só fecha o main AQUI no final de tudo!
 } // <-- Fecha a classe Main
