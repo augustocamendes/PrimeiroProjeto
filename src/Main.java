@@ -1,19 +1,27 @@
 public class Main {
     public static void main(String[] args) {
 
-        // 1. Criando a primeira pessoa (usando a palavra 'new' para dar vida a ela)
+        // 1. Criando as pessoas
         Pessoa pessoa1 = new Pessoa();
         pessoa1.nome = "Augusto";
-        pessoa1.idade = 25;
+        pessoa1.setIdade(-50); // Tentando colocar a idade inválida
 
-        // 2. Criando uma segunda pessoa a partir do mesmo molde
         Pessoa pessoa2 = new Pessoa();
         pessoa2.nome = "Maria";
-        pessoa2.idade = 30;
+        pessoa2.setIdade(30);  // Idade válida
 
-        // 3. Mandando cada uma executar a sua própria ação
+        // 2. Mandando falar
         pessoa1.falar();
         pessoa2.falar();
 
-    }
-}
+        // 3. Consultando com getIdade()
+        int idadeDaMaria = pessoa2.getIdade();
+        System.out.println("Idade consultada da Maria: " + idadeDaMaria);
+
+        // 4. Testando a condição
+        if (pessoa2.getIdade() >= 18) {
+            System.out.println(pessoa2.nome + " é maior de idade!");
+        }
+
+    } // <-- Só fecha o main AQUI no final de tudo!
+} // <-- Fecha a classe Main
