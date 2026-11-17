@@ -18,5 +18,13 @@ public abstract sealed class Employee permits Manager, Salesman {
     public void setSalary(double salary) {
         this.salary = salary;
     }
+    // Versão 1 da sobrecarga (só os dias):
+    public void solicitarFolga(int dias) {
+        System.out.println(this.name + " solicitou " + dias + " dias de folga.");
+    }
 
+    // Versão 2 da sobrecarga (dias + motivo):
+    public void solicitarFolga(int dias, String motivo) {
+        System.out.println(this.name + " solicitou " + dias + " dias de folga pelo motivo: " + motivo);
+    }
 }

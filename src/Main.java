@@ -1,23 +1,27 @@
 public class Main {
     public static void main(String[] args) {
 
-        // 1. Criando o Gerente:
-        Manager gerente = new Manager();
-        gerente.setName("Carlos");
-        gerente.setSalary(5000.0);
+        // 1. Criando o Pix e testando o processarPagamento e o DEFAULT (com private por trás)
+        MeioPagamento pag1 = new Pix();
+        pag1.processarPagamento(150.0);
+        pag1.emitirRecibo(); // chama o default
 
-        // 2. Criando o Vendedor:
-        Salesman vendedor = new Salesman();
-        vendedor.setName("Bia");
-        vendedor.setSalary(2000.0);
+        System.out.println("---");
 
-        // 3. O POLIMORFISMO em ação: chamamos o mesmo método 'calcularSalario()'
-        System.out.println("Salário final do Gerente " + gerente.getName() + ": R$ " + gerente.calcularSalario());
-        System.out.println("Salário final do Vendedor " + vendedor.getName() + ": R$ " + vendedor.calcularSalario());
+        // 2. Criando o Cartão de Crédito
+        MeioPagamento pag2 = new CartaoCredito();
+        pag2.processarPagamento(350.0);
 
-        // 4. Teste de curiosidade:
-        // Se você tentar descomentar a linha abaixo, o Java nem deixa compilar!
-        // Employee e = new Employee(); // ERRO! Employee é abstract e não pode ser instanciada!
+        System.out.println("---");
+
+        // 3. Criando o Boleto via LAMBDA
+        MeioPagamento boleto = valor -> System.out.println("Boleto de R$ " + valor + " gerado com código de barras! 📄");
+        boleto.processarPagamento(500.0);
+
+        System.out.println("---");
+
+        // 4. Testando o método STATIC direto na interface (sem dar new em nada!)
+        MeioPagamento.exibirRegrasBancarias();
 
     }
 }
